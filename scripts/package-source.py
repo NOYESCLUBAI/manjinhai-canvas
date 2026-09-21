@@ -5,7 +5,7 @@ import zipfile
 import sys
 
 root = Path(__file__).resolve().parent.parent
-files = [root / name for name in ('README.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', '.gitignore', '.env.example', 'package.json', 'package-lock.json', 'requirements.txt', 'index.html', 'tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json', 'vite.config.ts')]
+files = [root / name for name in ('README.md', 'README.en.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', '.gitignore', '.env.example', 'package.json', 'package-lock.json', 'requirements.txt', 'index.html', 'tsconfig.json', 'tsconfig.app.json', 'tsconfig.node.json', 'vite.config.ts')]
 if not (root / 'LICENSE').is_file():
     sys.exit('尚未选择开源协议，未生成发布包。请先确认 LICENSE。')
 for folder, suffixes in [('src', {'.ts','.tsx','.css'}), ('backend',{'.py'}), ('scripts',{'.sh','.mjs','.py'}), ('tests',{'.ts','.html'}), ('public',{'.png'})]:
