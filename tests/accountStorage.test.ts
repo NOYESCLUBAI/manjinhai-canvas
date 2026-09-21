@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import { accountKey, setAccountScope, accountStorage } from '../src/auth/accountStorage';
+const data=new Map<string,string>();
+Object.defineProperty(globalThis,'localStorage',{value:{getItem:(key:string)=>data.get(key)??null,setItem:(key:string,value:string)=>data.set(key,value)}});
+setAccountScope(null);accountStorage.setItem('mjh.projects.v1','original');
+setAccountScope('user-a');assert.equal(accountStorage.getItem('mjh.projects.v1'),null);accountStorage.setItem('mjh.projects.v1','A');
+setAccountScope('user-b');assert.equal(accountStorage.getItem('mjh.projects.v1'),null);accountStorage.setItem('mjh.projects.v1','B');
+setAccountScope('user-a');assert.equal(accountStorage.getItem('mjh.projects.v1'),'A');
+setAccountScope(null);assert.equal(accountKey('mjh.projects.v1'),'mjh.projects.v1');assert.equal(accountStorage.getItem('mjh.projects.v1'),'original');
+console.log('✓ guest preservation, account isolation, account switching');

@@ -1,0 +1,24 @@
+.choice-trigger { display:inline-flex; align-items:center; gap:6px; border:0; background:transparent; color:inherit; font:inherit; padding:4px 2px; cursor:pointer; max-width:210px; }
+.choice-trigger:disabled { opacity:.45; cursor:default; }
+.choice-trigger[aria-expanded=true] { color:#111; }
+.choice-popover { position:fixed; z-index:2000; width:336px; max-width:calc(100vw - 24px); max-height: min(420px, 65vh); overflow:auto; padding:14px; border:1px solid #e8e8e8; border-radius:20px; background:#fff; box-shadow:0 8px 36px #00000012; color:#252525; font-family:inherit; font-size:12px; line-height:1.4; animation:choice-appear .12s ease-out; }
+.choice-heading { padding:3px 5px 12px; color:#8b8b8b; font-size:11px; }
+.choice-options { display:flex; gap:4px; }
+.choice-options button { font:inherit; font-size:12px; border:0; border-radius:10px; color:#555; background:transparent; padding:10px; cursor:pointer; }
+.choice-options button:hover { background:#f7f7f7; color:#111; }
+.choice-options button[aria-selected=true] { color:#111; background:#f1f1f1; }
+.choice-options button:disabled { opacity:.4; cursor:default; }
+.choice-options button:focus-visible,.choice-trigger:focus-visible { outline:2px solid #333; outline-offset:2px; }
+.choice-models .choice-options { flex-direction:column; }
+.choice-models .choice-options button { display:flex; align-items:center; text-align:left; gap:10px; min-height:48px; }
+.choice-model-icon { display:grid; place-items:center; width:30px; height:30px; flex-shrink:0; border-radius:9px; background:white; border:1px solid #eee; }
+.choice-check { margin-left:auto; flex-shrink:0; }
+.choice-ratios .choice-options,.choice-segments .choice-options { background:#f4f4f4; padding:4px; border-radius:12px; flex-wrap:wrap; }
+.choice-ratios .choice-options button { flex:1 0 36px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:9px 4px; }
+.choice-ratio-icon { display:block; max-height:22px; border:1px solid #999; border-radius:2px; }
+.choice-segments .choice-options button { flex:1 0 auto; }
+.choice-ratios .choice-options button[aria-selected=true],.choice-segments .choice-options button[aria-selected=true] { background:white; box-shadow:0 1px 4px #0000000a; }
+@keyframes choice-appear { from {opacity:0; transform:translateY(5px)} to {opacity:1; transform:translateY(0)} }
+
+.image-camera-menu > div { display:grid; grid-template-columns:42px 1fr; align-items:center; gap:8px; color:#777; font-size:11px; }
+.text-writer-model .choice-trigger { font-size:11px; font-weight:600; }

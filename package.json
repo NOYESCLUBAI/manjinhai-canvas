@@ -1,0 +1,38 @@
+{
+  "name": "manjinhai-canvas",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bash scripts/dev.sh",
+    "dev:web": "vite --host 127.0.0.1 --port 5173",
+    "api": ".venv/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 3012 --ws none --reload",
+    "build": "tsc -b && vite build",
+    "test:agent": "node scripts/test-agent.mjs",
+    "preview": "vite preview",
+    "test:projects": "node scripts/test-agent.mjs tests/projectStore.test.ts",
+    "test:tidy": "node scripts/test-agent.mjs tests/tidyCanvas.test.ts",
+    "setup": "bash scripts/setup.sh",
+    "package:source": "python3 scripts/package-source.py",
+    "test:backup": "node scripts/test-agent.mjs tests/projectBackup.test.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.109.0",
+    "@tiptap/markdown": "^3.31.3",
+    "@tiptap/pm": "^3.31.3",
+    "@tiptap/react": "^3.31.3",
+    "@tiptap/starter-kit": "^3.31.3",
+    "@xyflow/react": "^12.11.2",
+    "lucide-react": "^1.26.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5"
+  },
+  "license": "AGPL-3.0-only"
+}

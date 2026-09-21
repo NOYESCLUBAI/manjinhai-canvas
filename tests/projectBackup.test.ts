@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { parseBackup } from '../src/projects/projectBackup';
+import { newProject } from '../src/projects/projectStore';
+const entry = newProject('备份测试');
+const data = {format:'manjinhai-project',version:1,entry,media:[]};
+assert.equal(parseBackup(JSON.stringify(data)).entry.project.projectTitle,'备份测试');
+const node = {id:'n',type:'canvas-card',position:{x:1,y:2},data:{kind:'image',assetId:'image'}};
+entry.project.canvases[0].nodes.push(node as never);
+assert.throws(()=>parseBackup(JSON.stringify(data)),/备份格式/);
+const withMedia = {...data,media:[{id:'image',name:'test.png',type:'image/png',base64:'YQ=='}]};
+assert.equal(parseBackup(JSON.stringify(withMedia)).media.length,1);
+assert.throws(()=>parseBackup(JSON.stringify({...withMedia,media:[withMedia.media[0],withMedia.media[0]]})),/备份格式/);
+assert.throws(()=>parseBackup(JSON.stringify({...withMedia,media:[{...withMedia.media[0],type:'text/html'}]})),/备份格式/);
+entry.project.canvases[0].edges=[{id:'e',source:'n',target:'missing'}];
+assert.throws(()=>parseBackup(JSON.stringify(withMedia)),/备份格式/);
+console.log('备份格式、缺失素材、重复素材、非媒体文件、悬空连线检查通过');

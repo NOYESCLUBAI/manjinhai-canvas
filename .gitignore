@@ -1,0 +1,19 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+dist/
+node_modules/
+
+.backups/
+
+.local/
+
+.env.local
+
+# Private configuration and release artifacts
+.env.*
+!.env.example
+release/
+*.log
